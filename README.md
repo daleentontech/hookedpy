@@ -27,8 +27,8 @@ Send and Receive Webhooks with Django (Reference)
 Sending webhook events is pretty much straightfoward.
 
 1. Receive the destination webhook URL
-2. get the data ready
-3. call the `http://localhost:8000/hook/send/` endpoint with the data
+2. Get the data ready
+3. Call the `http://localhost:8000/hook/send/` endpoint with the data
 
 ```curl
 curl -X POST http://localhost:8000/hook/send/ -d '{"foo": "bar"}'
