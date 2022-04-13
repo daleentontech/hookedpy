@@ -4,7 +4,7 @@ Send and Receive Webhooks with Django (Reference)
 
 # Receiving Webhooks
 
-## USING [Ngrok](https://www.ngrok.com)
+## Using [Ngrok](https://www.ngrok.com)
 
 1. setup ngrok on your machine
 2. tunnel your port to ngrok to make it publicly available (put your local host on the internet)
