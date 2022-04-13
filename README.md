@@ -17,9 +17,7 @@ Send and Receive Webhooks with Django (Reference)
 
 `http://83d4-169-255-125-200.ngrok.io -> http://localhost:8000`
 
-#### Process The Event
-
-You are now ready to process webhook events
+#### You are now ready to process webhook events
 
 - Provide your webhook URL `http://83d4-169-255-125-200.ngrok.io/hook/process/` to whoever will be sending you webhooks
 - The logic on /hook/process should then parse the event and do with it as you have commanded.
