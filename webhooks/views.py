@@ -38,7 +38,8 @@ class SendWebhookView(CsrfExemptMixin, View):
     :- destination is whoever you will be sending webhook events
     """
     def post(self, request, *args, **kwargs):
-        data = json.loads(request.body)
+        data = request.body # this is the data you want to send to the destination, ideally it should be serialized.
+        print(data)
         webhook_url = constants.webhook_url
         try:
             response = WebhookService.send_webhook(webhook_url, data)

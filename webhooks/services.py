@@ -8,7 +8,8 @@ class WebhookService:
     def send_webhook(url, data):
         headers = {'Content-type': 'application/json'}
         try:
-            response = requests.post(url, data=json.dumps(data), headers=headers)
+            json_data = json.loads(data)
+            response = requests.post(url, data=json.dumps(json_data), headers=headers)
             return response.status_code
         except Exception as e:
             print(e)
