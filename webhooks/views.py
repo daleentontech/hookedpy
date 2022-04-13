@@ -8,6 +8,8 @@ from django.conf import settings
 from django.http import HttpResponse
 
 from braces.views import CsrfExemptMixin
+from webhooks import constants
+from webhooks.services import WebhookService
 
 class ProcessHookView(CsrfExemptMixin, View):
     """
@@ -36,9 +38,11 @@ class SendWebhookView(CsrfExemptMixin, View):
     :- destination is whoever you will be sending webhook events
     """
     def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        webhook_url = constants.webhook_url
         try:
-            data = json.loads(request.body)
-            print(data)
-        except Exception:
-            return HttpResponse("status=status.HTTP_400_BAD_REQUEST")
-        return HttpResponse("status=status.HTTP_200_OK")
+            response = WebhookService.send_webhook(webhook_url, data)
+            return HttpResponse(response, status=status.HTTP_200_OK)
+        except Exception as e: # Note that Exeptions should be specific.
+            print(e)
+            return HttpResponse(e, status=status.HTTP_400_BAD_REQUEST)
